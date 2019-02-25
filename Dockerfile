@@ -6,7 +6,7 @@ RUN sudo apt-get install apt-transport-https && \
     sudo apt-get update -yq && \
     sudo apt-get install -yq libpng-dev libicu-dev libjpeg62-turbo-dev yarn && \
     sudo docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ && \
-    sudo docker-php-ext-install -j$(nproc) gd pcntl intl zip pdo_mysql && \
+    sudo docker-php-ext-install -j$(nproc) gd pcntl intl zip pdo_mysql exif && \
     sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
