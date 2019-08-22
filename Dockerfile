@@ -1,4 +1,4 @@
-FROM circleci/php:7.2-node-browsers
+FROM circleci/php:7.1-node-browsers
 ENV DOCKERIZE_VERSION v0.6.1
 ENV PHP_INI_DIR /usr/local/etc/php
 RUN sudo apt-get install apt-transport-https && \
