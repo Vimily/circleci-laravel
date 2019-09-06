@@ -10,7 +10,7 @@ RUN sudo apt-get install apt-transport-https && \
     sudo pecl install mailparse && \
     sudo docker-php-ext-enable mailparse && \
     sudo docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ && \
-    sudo docker-php-ext-install -j$(nproc) gd pcntl intl pdo_mysql exif && \
+    sudo docker-php-ext-install -j$(nproc) gd pcntl intl pdo_mysql exif bcmath && \
     sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
