@@ -1,4 +1,4 @@
-FROM circleci/php:7.2-node-browsers
+FROM circleci/php:7.4-node-browsers
 ENV DOCKERIZE_VERSION v0.6.1
 ENV PHP_INI_DIR /usr/local/etc/php
 RUN sudo apt-get install apt-transport-https && \
@@ -9,7 +9,7 @@ RUN sudo apt-get install apt-transport-https && \
     sudo echo pecl config-set php_ini "${PHP_INI_DIR}/php.ini" && \
     sudo pecl install mailparse && \
     sudo docker-php-ext-enable mailparse && \
-    sudo docker-php-ext-configure gd --with-jpeg-dir=/usr/include/ && \
+    sudo docker-php-ext-configure gd --with-jpeg && \
     sudo docker-php-ext-install -j$(nproc) gd pcntl intl pdo_mysql exif bcmath && \
     sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
