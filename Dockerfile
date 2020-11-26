@@ -20,4 +20,5 @@ COPY --from=composer /usr/local/bin/composer /usr/local/bin/composer
 COPY --from=dockerize /usr/local/bin/dockerize /usr/local/bin/dockerize
 
 RUN sudo apt-get update -yq && \
-    sudo apt-get install -yq php$PHP_MINOR-mailparse php$PHP_MINOR-intl php$PHP_MINOR-exif php$PHP_MINOR-bcmath
+    sudo apt-get install -yq php$PHP_MINOR-mailparse php$PHP_MINOR-intl php$PHP_MINOR-exif php$PHP_MINOR-bcmath python python2 && \
+    sudo apt-get clean
