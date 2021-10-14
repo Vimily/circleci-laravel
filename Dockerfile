@@ -12,5 +12,5 @@ COPY --from=dockerize /usr/local/bin/dockerize /usr/local/bin/dockerize
 RUN composer --version && \
     dockerize --version && \
     sudo apt-get update -yq && \
-    sudo apt-get install -yq php$PHP_MINOR-mailparse php$PHP_MINOR-intl php$PHP_MINOR-exif php$PHP_MINOR-bcmath python python2 && \
+    sudo apt-get install -yq php$PHP_MINOR-mailparse php$PHP_MINOR-intl php$PHP_MINOR-exif php$PHP_MINOR-bcmath python python2 mariadb-client && \
     sudo apt-get clean
