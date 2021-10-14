@@ -1,20 +1,16 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Publish Docker images
 
 on:
   push:
     branches:
-      - 'master'
-      - 'composer-2'
+      - master
+      - composer-2
+      - php72
     tags:
       - '*'
   pull_request:
     branches:
-      - 'master'
+      - master
 
 jobs:
   push_to_registry:
