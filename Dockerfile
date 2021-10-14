@@ -1,6 +1,6 @@
-FROM cimg/php:7.4-node AS composer
+FROM cimg/php:7.2-node
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 ENV DOCKERIZE_VERSION v0.6.1
 RUN sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
