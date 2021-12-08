@@ -5,7 +5,10 @@ RUN sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_
     sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 FROM cimg/php:8.1-node
+
 COPY --from=dockerize /usr/local/bin/dockerize /usr/local/bin/dockerize
+COPY --from=cimg/node:14.18 /usr/local/bin/node /usr/local/bin/node
+COPY --from=cimg/node:14.18 /usr/local/bin/node /usr/local/bin/nodejs
 
 RUN composer --version && \
     dockerize --version && \
