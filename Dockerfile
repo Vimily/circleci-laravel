@@ -1,4 +1,4 @@
-FROM cimg/php:8.0-node AS dockerize
+FROM cimg/php:8.1-node AS dockerize
 ENV DOCKERIZE_VERSION v0.6.1
 
 RUN sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
