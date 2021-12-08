@@ -6,6 +6,9 @@ on:
       - master
       - composer-2
       - php72
+      - php74
+      - php80
+      - php81
     tags:
       - '*'
   pull_request:
