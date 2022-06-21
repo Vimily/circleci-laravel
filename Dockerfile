@@ -14,6 +14,7 @@ RUN composer --version && \
     dockerize --version && \
     sudo apt-get update -yq && \
     sudo apt-get install -yq python python2 mariadb-client && \
-    sudo pecl install mailparse && \
+    sudo pecl install mailparse xdebug && \
     php -m | grep "mailparse" && \
+    php -m | grep "xdebug" && \
     sudo apt-get clean
