@@ -13,7 +13,7 @@ COPY --from=cimg/node:20.15.1 /usr/local/bin/node /usr/local/bin/nodejs
 RUN composer --version && \
     dockerize --version && \
     sudo apt-get update -yq && \
-    sudo apt-get install -yq python python2 mariadb-client && \
+    sudo apt-get install -yq python2 mariadb-client && \
     sudo pecl install mailparse xdebug && \
     echo xdebug.mode=coverage | sudo tee /etc/php.d/99-xdebug.ini && \
     php -m | grep "mailparse" && \
