@@ -1,15 +1,21 @@
-FROM cimg/php:7.4-node AS dockerize
+FROM cimg/php:8.1-node AS dockerize
 ENV DOCKERIZE_VERSION v0.6.1
 
 RUN sudo wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && \
     sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-FROM cimg/php:7.4-node
-COPY --from=composer:1 /usr/bin/composer /usr/local/bin/composer
+FROM cimg/php:8.1-node
+
 COPY --from=dockerize /usr/local/bin/dockerize /usr/local/bin/dockerize
+COPY --from=cimg/node:20.19.0 /usr/local/bin/node /usr/local/bin/node
+COPY --from=cimg/node:20.19.0 /usr/local/bin/node /usr/local/bin/nodejs
 
 RUN composer --version && \
     dockerize --version && \
     sudo apt-get update -yq && \
-    sudo apt-get install -yq php$PHP_MINOR-mailparse php$PHP_MINOR-intl php$PHP_MINOR-exif php$PHP_MINOR-bcmath python python2 mariadb-client && \
+    sudo apt-get install -yq python2 mariadb-client && \
+    sudo pecl install mailparse xdebug && \
+    echo xdebug.mode=coverage | sudo tee /etc/php.d/99-xdebug.ini && \
+    php -m | grep "mailparse" && \
+    php -m | grep "xdebug" && \
     sudo apt-get clean
