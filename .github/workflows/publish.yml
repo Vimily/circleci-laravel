@@ -9,6 +9,7 @@ on:
       - php74
       - php80
       - php81
+      - php82
     tags:
       - '*'
   pull_request:
